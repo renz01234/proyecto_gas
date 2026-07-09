@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Gestión de Roles</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+
+<script>
+	function confirmarEliminacion() {
+		return confirm("¿Desea eliminar este rol?");
+	}
+</script>
+
+</head>
+
+<body class="container mt-4">
+
+	<h2 class="text-center">Gestión de Roles</h2>
+
+	<!-- MENSAJE -->
+	<div th:if="${msg}" class="alert alert-success">
+		<span th:text="${msg}"></span>
+	</div>
+
+	<!-- BUSCADOR -->
+	<form class="mb-3" th:action="@{/rol/buscar}" method="get">
+		<input type="text" name="nombre"
+			class="form-control w-25 d-inline"
+			placeholder="Buscar rol">
+
+		<button class="btn btn-info">Buscar</button>
+	</form>
+
+	<!-- BOTÓN INGRESAR -->
+	<a class="btn btn-primary mb-3"
+		th:href="@{/rol/ingresar}">
+		+ Nuevo Rol
+	</a>
+
+	<!-- TABLA -->
+	<table class="table table-bordered table-hover">
+
+		<thead class="table-dark">
+			<tr>
+				<th>ID</th>
+				<th>Nombre del Rol</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+			<tr th:each="r : ${lista_rol}">
+
+				<td th:text="${r.codRol}"></td>
+				<td th:text="${r.nombreRol}"></td>
+
+				<td>
+
+					<a class="btn btn-warning btn-sm"
+						th:href="@{'/rol/modificar/' + ${r.codRol}}">
+						Editar
+					</a>
+
+					<a class="btn btn-danger btn-sm"
+						th:href="@{'/rol/eliminar/' + ${r.codRol}}"
+						onclick="return confirmarEliminacion();">
+						Eliminar
+					</a>
+
+				</td>
+
+			</tr>
+
+		</tbody>
+
+	</table>
+
+</body>
+</html>

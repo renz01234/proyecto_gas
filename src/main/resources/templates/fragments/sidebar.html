@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="sidebar">
+
+    <button class="btn btn-dark" id="btnMenu">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <div id="sidebar">
+
+        <h4 class="text-center mb-4">
+            Sistema Gas
+        </h4>
+
+        <a th:href="@{/producto/listar}">
+            <i class="bi bi-box-seam"></i>
+            Productos
+        </a>
+
+        <a th:href="@{/usuario/listar}">
+            <i class="bi bi-people"></i>
+            Usuarios
+        </a>
+
+        <a href="#">
+            <i class="bi bi-cart"></i>
+            Pedidos
+        </a>
+
+        <a href="#">
+            <i class="bi bi-credit-card"></i>
+            Pagos
+        </a>
+
+        <a th:href="@{/}">
+            <i class="bi bi-box-arrow-right"></i>
+            Cerrar Sesión
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
